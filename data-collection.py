@@ -27,3 +27,4 @@ def fetch_and_store_data(ticker_symbol):
 if __name__ == "__main__":
     if datetime.datetime.today().weekday() == 4:  # Check if today is Friday
         fetch_and_store_data('BTC-USD')  # For BTC data
+        fetch_and_store_data('AAPL')  # For AAPL data
