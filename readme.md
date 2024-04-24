@@ -20,38 +20,37 @@ These instructions will guide you through the process of setting up the Python s
 ```sh
 git clone https://github.com/varunkapuria96/btcprediction.git
 cd btcprediction
-
+```
 2. Build the Docker image:
-sh
-Copy code
+```sh
+
 docker build -t <acrName>.azurecr.io/btc-price-collector:latest .
 Push the Docker image to ACR:
-sh
-Copy code
+```sh
+
 az acr login --name <acrName>
 docker push <acrName>.azurecr.io/btc-price-collector:latest
 Replace <acrName> with the name of your Azure Container Registry.
-
+```
 Deploying to AKS
 Ensure kubectl is configured with your AKS cluster context:
-sh
-Copy code
+```sh
+
 az aks get-credentials --resource-group <ResourceGroupName> --name <AKSClusterName>
+```
 Deploy the CronJob to AKS:
-sh
-Copy code
+```sh
+
 kubectl apply -f btc-price-fetcher-cronjob.yaml
+```
 Configuration
 The btc-price-fetcher-cronjob.yaml file defines the CronJob resource for Kubernetes. Adjust the schedule as needed to determine when the job should run.
 
 Usage
 The script will automatically run at the scheduled time, fetch the Bitcoin prices from the past week, and append them to the BTC-USD.csv file in the current working directory.
 
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
-
 License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License.
 
 Acknowledgments
 Thanks to the yfinance library for providing an easy way to fetch financial data.
